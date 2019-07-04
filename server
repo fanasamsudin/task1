@@ -1,0 +1,51 @@
+import java.net.*;
+import java.io.*;
+
+public class Server1
+{
+	public static void main (String [] args) throws IOException
+	{
+	
+	 Socket socket           = null;
+	 ServerSocket server     = null;
+	 
+	
+	// public Server (int port)
+	{
+		server = new ServerSocket (11001);
+		System.out.println(" Server ON ");
+		
+		System.out.println(" Waiting .... ");
+		
+		socket = server.accept();
+		System.out.println(" Connected ");
+		
+		InputStreamReader rd = (new InputStreamReader(socket.getInputStream()));
+		BufferedReader in = new BufferedReader (
+			new InputStreamReader(socket.getInputStream()));
+		
+		PrintWriter rp = new PrintWriter(socket.getOutputStream());
+		
+		rp.println(" What's up ");
+		rp.flush();
+		
+		String rcv = in.readLine();
+		System.out.println("Client");
+		System.out.println(rcv);
+		
+	//	socket.close();
+	//	in.close();
+	 }
+
+		{
+		
+		System.out.println(" END Connection ");
+
+		}
+		
+//	socket.close();
+//	in.close();
+	
+	}
+	
+}
